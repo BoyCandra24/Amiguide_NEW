@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Amiguide</string>
+    <string name="kata_login">Silahkan Login</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_sign_in">Sign in</string>
+    <string name="sign_out">Sign out</string>
+    <string name="sign_up">Sign up</string>
+    <string name="nama_tempat">nama tempat</string>
+    <string name="from">from</string>
+    <string name="position">lokasi</string>
+    <string name="teks1">Information Place</string>
+    <string name="nama">Name Place</string>
+    <string name="desc">Description</string>
+    <string name="loc">Location</string>
+    <string name="nama_dosen">Nama Dosen</string>
+</resources>
