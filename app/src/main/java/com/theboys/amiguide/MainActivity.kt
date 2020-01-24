@@ -1,7 +1,9 @@
 package com.theboys.amiguide
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,6 +33,23 @@ class MainActivity : AppCompatActivity() {
         buttonFeedback.setOnClickListener {
             startActivity(Intent(this,FeedbackActivity::class.java))
         }
+
+    }
+
+    override fun onBackPressed() {
+
+        val dialogKampret = AlertDialog.Builder(this)
+            .setTitle("Keluar ?")
+            .setMessage("YA atau Tidak?")
+            .setPositiveButton("YA") { dialogInterface, i ->
+                finishAffinity()
+            }
+            .setNegativeButton("Tidak") { dialogInterface, i ->
+                dialogInterface.dismiss()
+            }
+            .create()
+
+        dialogKampret.show()
 
     }
 

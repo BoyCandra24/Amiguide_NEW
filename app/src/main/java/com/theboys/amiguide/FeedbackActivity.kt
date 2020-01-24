@@ -90,4 +90,9 @@ class FeedbackActivity : AppCompatActivity() {
         super.onStop()
         mAdapter.stopListening()
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finishAffinity()
+    }
 }

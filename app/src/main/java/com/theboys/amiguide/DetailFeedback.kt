@@ -1,5 +1,6 @@
 package com.theboys.amiguide
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,13 +19,14 @@ class DetailFeedback : AppCompatActivity() {
 
         update_nama.setText(intent.getStringExtra("NAMAFEED"))
         update_feedback.setText(intent.getStringExtra("FEEDBACK"))
+        val fid = intent.getStringExtra("FEEDBACKID")
 
         btn_kirim_update.setOnClickListener {
-            kirimData(auth.currentUser!!.uid)
+            kirimData(auth.currentUser!!.uid, fid)
         }
     }
 
-    private fun kirimData(uid: String) {
+    private fun kirimData(uid: String, feedbackId: String) {
 
         var datanya = mapOf(
             "uid" to uid,
@@ -32,13 +34,14 @@ class DetailFeedback : AppCompatActivity() {
             "input_feedback" to update_feedback.text.toString()
         )
 
-        db.collection("feedbacks").document().update(datanya)
+        db.collection("feedbacks").document(feedbackId).update(datanya)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     Toast.makeText(this, "Sukses", Toast.LENGTH_SHORT).show()
                     update_nama.text!!.clear()
                     update_feedback.text!!.clear()
-                    finish()
+                    finishAffinity()
+                    startActivity(Intent(this, FeedbackActivity::class.java))
                 }
             }
             .addOnFailureListener {
